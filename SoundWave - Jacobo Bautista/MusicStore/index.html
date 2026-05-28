@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SoundWave Store | Tu Tienda de Música</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-lg" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="index.html">
+            <i class="bi bi-music-note-beamed text-warning"></i>
+            SOUND<span class="text-warning">WAVE</span>
+        </a>
+        <button class="navbar-toggler border-warning" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+            <ul class="navbar-nav ms-auto fw-semibold text-uppercase">
+                <li class="nav-item"><a class="nav-link" href="#inicio"><i class="bi bi-house-fill me-1"></i>Inicio</a></li>
+                <li class="nav-item"><a class="nav-link" href="#catalogo"><i class="bi bi-grid-fill me-1"></i>Catálogo</a></li>
+                <li class="nav-item"><a class="nav-link" href="#destacados"><i class="bi bi-star-fill me-1"></i>Destacados</a></li>
+                <li class="nav-item"><a class="nav-link" href="#nosotros"><i class="bi bi-info-circle-fill me-1"></i>Nosotros</a></li>
+                <li class="nav-item"><a class="nav-link" href="carrito.html"><i class="bi bi-cart-fill me-1"></i>Carrito <span class="badge bg-warning text-dark ms-1" id="numerito">0</span></a></li>
+                <li class="nav-item"><a class="nav-link" href="factura.html"><i class="bi bi-receipt me-1"></i>Factura</a></li>
+                <li class="nav-item"><a class="nav-link btn btn-outline-warning ms-2 px-3" href="login.html"><i class="bi bi-person-fill me-1"></i>Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO / SLIDER -->
+<section id="inicio">
+    <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1600&auto=format&fit=crop" class="d-block w-100 hero-img" alt="Vinilos">
+                <div class="carousel-caption text-start ps-5">
+                    <p class="slide-sub text-warning fw-bold">NUEVA COLECCIÓN 2026</p>
+                    <h1 class="slide-title">Vinilos que<br>Cuentan Historias</h1>
+                    <p class="slide-desc">Encuentra los clásicos y nuevos lanzamientos en nuestra colección de vinilos</p>
+                    <a href="#catalogo" class="btn btn-warning btn-lg fw-bold px-4 mt-2">Ver Catálogo</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?w=1600&auto=format&fit=crop" class="d-block w-100 hero-img" alt="Instrumentos">
+                <div class="carousel-caption text-start ps-5">
+                    <p class="slide-sub text-warning fw-bold">INSTRUMENTOS PREMIUM</p>
+                    <h1 class="slide-title">Toca Tu<br>Pasión</h1>
+                    <p class="slide-desc">Guitarras, pianos, baterías y más — Todo lo que necesitas para crear música</p>
+                    <a href="#catalogo" class="btn btn-warning btn-lg fw-bold px-4 mt-2">Explorar</a>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1600&auto=format&fit=crop" class="d-block w-100 hero-img" alt="Estudio">
+                <div class="carousel-caption text-start ps-5">
+                    <p class="slide-sub text-warning fw-bold">EQUIPOS DE ESTUDIO</p>
+                    <h1 class="slide-title">Lleva Tu<br>Sonido al Límite</h1>
+                    <p class="slide-desc">Micrófonos, interfaces de audio, auriculares y más para tu estudio en casa</p>
+                    <a href="#catalogo" class="btn btn-warning btn-lg fw-bold px-4 mt-2">Descubrir</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+</section>
+
+<!-- CATEGORÍAS RÁPIDAS -->
+<section class="py-4 bg-dark border-top border-bottom border-warning">
+    <div class="container">
+        <div class="row g-3 text-center">
+            <div class="col-6 col-md-3">
+                <a href="#catalogo" class="cat-chip" onclick="filtrarCategoria('vinilos')">
+                    <i class="bi bi-disc-fill"></i> Vinilos
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#catalogo" class="cat-chip" onclick="filtrarCategoria('instrumentos')">
+                    <i class="bi bi-music-note-list"></i> Instrumentos
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#catalogo" class="cat-chip" onclick="filtrarCategoria('discos')">
+                    <i class="bi bi-collection-fill"></i> Discos & CDs
+                </a>
+            </div>
+            <div class="col-6 col-md-3">
+                <a href="#catalogo" class="cat-chip" onclick="filtrarCategoria('implementos')">
+                    <i class="bi bi-headphones"></i> Implementos
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CATÁLOGO -->
+<section id="catalogo" class="py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-label">NUESTRA TIENDA</span>
+            <h2 class="section-title">Catálogo de Productos</h2>
+            <p class="text-muted">Todo lo que necesitas para tu experiencia musical</p>
+        </div>
+
+        <!-- Filtros -->
+        <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" id="filtros">
+            <button class="btn-filtro active" id="todos" onclick="filtrarCategoria('todos')">Todos</button>
+            <button class="btn-filtro" id="cat-vinilos" onclick="filtrarCategoria('vinilos')">Vinilos</button>
+            <button class="btn-filtro" id="cat-instrumentos" onclick="filtrarCategoria('instrumentos')">Instrumentos</button>
+            <button class="btn-filtro" id="cat-discos" onclick="filtrarCategoria('discos')">Discos & CDs</button>
+            <button class="btn-filtro" id="cat-implementos" onclick="filtrarCategoria('implementos')">Implementos</button>
+        </div>
+
+        <!-- Grid productos -->
+        <div class="row g-4" id="contenedor-productos">
+            <!-- Se llena con JS -->
+        </div>
+    </div>
+</section>
+
+<!-- TOP 5 ARTISTAS MÁS VENDIDOS - TABLA -->
+<section id="destacados" class="py-5 bg-dark">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-label text-warning">RANKINGS</span>
+            <h2 class="section-title text-white">Top 5 Más Vendidos del Mes</h2>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover border-warning align-middle">
+                <thead class="text-warning border-warning">
+                    <tr>
+                        <th>#</th>
+                        <th>Artista / Álbum</th>
+                        <th>Categoría</th>
+                        <th>Precio</th>
+                        <th>Ventas</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank-badge gold">1</span></td>
+                        <td><strong>Pink Floyd – The Wall</strong><br><small class="text-muted">Vinilo Doble LP Remasterizado</small></td>
+                        <td><span class="badge bg-warning text-dark">Vinilo</span></td>
+                        <td>$189.000 COP</td>
+                        <td>342 uds.</td>
+                        <td><span class="badge bg-success">Disponible</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge silver">2</span></td>
+                        <td><strong>Fender Stratocaster Classic</strong><br><small class="text-muted">Guitarra Eléctrica México Series</small></td>
+                        <td><span class="badge bg-info text-dark">Instrumento</span></td>
+                        <td>$3.450.000 COP</td>
+                        <td>87 uds.</td>
+                        <td><span class="badge bg-success">Disponible</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge bronze">3</span></td>
+                        <td><strong>The Beatles – Abbey Road</strong><br><small class="text-muted">CD Edición 50 Aniversario</small></td>
+                        <td><span class="badge bg-secondary">Disco CD</span></td>
+                        <td>$65.000 COP</td>
+                        <td>215 uds.</td>
+                        <td><span class="badge bg-success">Disponible</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">4</span></td>
+                        <td><strong>Audio-Technica AT2020</strong><br><small class="text-muted">Micrófono Condensador Cardioide</small></td>
+                        <td><span class="badge bg-purple">Implemento</span></td>
+                        <td>$420.000 COP</td>
+                        <td>156 uds.</td>
+                        <td><span class="badge bg-warning text-dark">Pocas unidades</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank-badge">5</span></td>
+                        <td><strong>Miles Davis – Kind of Blue</strong><br><small class="text-muted">Vinilo 180g Premium</small></td>
+                        <td><span class="badge bg-warning text-dark">Vinilo</span></td>
+                        <td>$145.000 COP</td>
+                        <td>198 uds.</td>
+                        <td><span class="badge bg-success">Disponible</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<!-- VIDEO DESTACADO -->
+<section class="py-5 bg-black">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-label text-warning">CONOCE NUESTROS PRODUCTOS</span>
+            <h2 class="section-title text-white">Escucha la Diferencia</h2>
+        </div>
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7">
+                <div class="ratio ratio-16x9 rounded-4 overflow-hidden border border-warning border-2 shadow-lg">
+                    
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/Q29sOLG8xGE?si=XqRTDg_ru7y-RaAY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <h3 class="text-white mb-4">¿Por qué elegirnos?</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-transparent text-white border-secondary py-3">
+                        <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                        <strong>+5.000 productos</strong> en catálogo permanente
+                    </li>
+                    <li class="list-group-item bg-transparent text-white border-secondary py-3">
+                        <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                        <strong>Garantía certificada</strong> en todos nuestros instrumentos
+                    </li>
+                    <li class="list-group-item bg-transparent text-white border-secondary py-3">
+                        <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                        <strong>Envíos a todo Colombia</strong> en 24-72 horas
+                    </li>
+                    <li class="list-group-item bg-transparent text-white border-secondary py-3">
+                        <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                        <strong>Asesoría musical</strong> personalizada con expertos
+                    </li>
+                    <li class="list-group-item bg-transparent text-white border-secondary py-3">
+                        <i class="bi bi-check-circle-fill text-warning me-2"></i>
+                        <strong>Pagos seguros</strong> con múltiples métodos de pago
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- SECCIÓN NOSOTROS -->
+<section id="nosotros" class="py-5 bg-dark">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-label text-warning">QUIÉNES SOMOS</span>
+            <h2 class="section-title text-white">Nuestra Historia</h2>
+        </div>
+        <div class="row g-4 align-items-center">
+            <div class="col-md-6">
+                <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&auto=format&fit=crop" class="img-fluid rounded-4 border border-warning" alt="Tienda">
+            </div>
+            <div class="col-md-6 text-white">
+                <h4 class="text-warning mb-3">Más de 15 años conectando personas con la música</h4>
+                <p class="mb-3">SoundWave Store nació en Bogotá con una misión clara: hacer que la música de calidad sea accesible para todos, desde el músico profesional hasta el melómano apasionado.</p>
+                <p class="mb-4">Contamos con la mayor selección de vinilos, instrumentos, discos y equipos de audio en Colombia, siempre al mejor precio y con el mejor servicio.</p>
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3 class="text-warning">15+</h3>
+                            <p class="small">Años de experiencia</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3 class="text-warning">50K+</h3>
+                            <p class="small">Clientes satisfechos</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3 class="text-warning">5K+</h3>
+                            <p class="small">Productos disponibles</p>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card">
+                            <h3 class="text-warning">4.9⭐</h3>
+                            <p class="small">Calificación promedio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- UBICACIÓN -->
+<section class="py-5 bg-black">
+    <div class="container">
+        <div class="section-header text-center mb-4">
+            <span class="section-label text-warning">VISÍTANOS</span>
+            <h2 class="section-title text-white">Encuéntranos</h2>
+        </div>
+        <div class="ratio ratio-21x9 border border-warning rounded-4 overflow-hidden">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1148.6313237063018!2d-74.07496088717008!3d4.642250083512468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a34f3b56e65%3A0xe74f83a9e8a9721f!2sCentro%20Comercial%20Galer%C3%ADas!5e0!3m2!1ses!2sco!4v1774974411070!5m2!1ses!2sco" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <div class="row mt-4 text-center text-white g-3">
+            <div class="col-md-4">
+                <i class="bi bi-geo-alt-fill text-warning fs-4"></i>
+                <p class="mb-0 mt-2"><strong>Dirección</strong></p>
+                <p class="text-muted small">Centro Comercial Galerías, Bogotá, Colombia</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-clock-fill text-warning fs-4"></i>
+                <p class="mb-0 mt-2"><strong>Horario</strong></p>
+                <p class="text-muted small">Lun-Sáb: 9am - 8pm | Dom: 10am - 6pm</p>
+            </div>
+            <div class="col-md-4">
+                <i class="bi bi-telephone-fill text-warning fs-4"></i>
+                <p class="mb-0 mt-2"><strong>Contacto</strong></p>
+                <p class="text-muted small">+57 601 234 5678 | info@soundwave.co</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FORMULARIO CONTACTO / NEWSLETTER -->
+<section class="py-5 bg-dark">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="contact-card">
+                    <h3 class="text-warning text-center mb-2"><i class="bi bi-envelope-fill me-2"></i>Únete a SoundWave</h3>
+                    <p class="text-center text-muted mb-4">Recibe ofertas exclusivas y novedades musicales</p>
+                    <form id="formContacto" novalidate>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Nombre completo *</label>
+                                <input type="text" class="form-control sw-input" id="contactNombre" placeholder="Tu nombre" required>
+                                <div class="invalid-feedback">Por favor ingresa tu nombre</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-white">Correo electrónico *</label>
+                                <input type="email" class="form-control sw-input" id="contactEmail" placeholder="tu@email.com" required>
+                                <div class="invalid-feedback">Por favor ingresa un email válido</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-white">Mensaje</label>
+                                <textarea class="form-control sw-input" id="contactMensaje" rows="3" placeholder="¿Qué buscas? ¿Tienes alguna pregunta?"></textarea>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-warning w-100 fw-bold py-2">
+                                    <i class="bi bi-send-fill me-2"></i>ENVIAR MENSAJE
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white py-5 border-top border-warning">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <h5 class="text-warning fw-bold mb-3"><i class="bi bi-music-note-beamed me-2"></i>SOUNDWAVE STORE</h5>
+                <p class="text-muted small">Tu destino musical en Colombia. Vinilos, instrumentos, discos y todo lo que necesitas para tu pasión musical.</p>
+                <div class="d-flex gap-3 mt-3">
+                    <a href="#" class="text-warning fs-5"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="text-warning fs-5"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="text-warning fs-5"><i class="bi bi-tiktok"></i></a>
+                    <a href="#" class="text-warning fs-5"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <h6 class="text-warning mb-3">TIENDA</h6>
+                <ul class="list-unstyled small text-muted">
+                    <li><a href="#catalogo" class="footer-link">Vinilos</a></li>
+                    <li><a href="#catalogo" class="footer-link">Instrumentos</a></li>
+                    <li><a href="#catalogo" class="footer-link">Discos & CDs</a></li>
+                    <li><a href="#catalogo" class="footer-link">Implementos</a></li>
+                </ul>
+            </div>
+            <div class="col-md-2">
+                <h6 class="text-warning mb-3">CUENTA</h6>
+                <ul class="list-unstyled small text-muted">
+                    <li><a href="login.html" class="footer-link">Iniciar Sesión</a></li>
+                    <li><a href="registro.html" class="footer-link">Registrarse</a></li>
+                    <li><a href="carrito.html" class="footer-link">Mi Carrito</a></li>
+                    <li><a href="factura.html" class="footer-link">Mis Facturas</a></li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <h6 class="text-warning mb-3">NEWSLETTER</h6>
+                <p class="small text-muted mb-2">Recibe novedades y promociones exclusivas</p>
+                <div class="input-group">
+                    <input type="email" class="form-control sw-input" placeholder="tu@email.com">
+                    <button class="btn btn-warning fw-bold" type="button">Suscribir</button>
+                </div>
+            </div>
+        </div>
+        <hr class="border-warning mt-4">
+        <div class="text-center text-muted small">
+            <p class="mb-0">© 2026 SoundWave Store — Todos los derechos reservados | Bogotá, Colombia</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Toast notificación -->
+<div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+    <div id="toastCarrito" class="toast align-items-center text-white bg-success border-0" role="alert">
+        <div class="d-flex">
+            <div class="toast-body fw-bold">
+                <i class="bi bi-cart-check-fill me-2"></i> ¡Producto agregado al carrito!
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/productos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
