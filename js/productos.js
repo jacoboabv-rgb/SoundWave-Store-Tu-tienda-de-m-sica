@@ -6,28 +6,28 @@ const productos = [
     {
         id: "vinilo-01",
         titulo: "Pink Floyd – The Wall (2LP)",
-        imagen: "https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&auto=format&fit=crop",
+        imagen: "https://http2.mlstatic.com/D_Q_NP_673670-MLA100029917761_122025-O.webp",
         categoria: { nombre: "Vinilos", id: "vinilos" },
         precio: 189000
     },
     {
         id: "vinilo-02",
         titulo: "Miles Davis – Kind of Blue (180g)",
-        imagen: "https://images.unsplash.com/photo-1511379938547-c1f69b13d835?w=400&auto=format&fit=crop",
+        imagen: "https://www.lamusica.com.co/cdn/shop/files/R-2825456-1430770143-1057.jpg?v=1722544444",
         categoria: { nombre: "Vinilos", id: "vinilos" },
         precio: 145000
     },
     {
         id: "vinilo-03",
         titulo: "Led Zeppelin – IV Edición Remasterizada",
-        imagen: "https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&auto=format&fit=crop",
+        imagen: "https://http2.mlstatic.com/D_NQ_NP_708230-CBT75866292121_042024-O.webp",
         categoria: { nombre: "Vinilos", id: "vinilos" },
         precio: 165000
     },
     {
         id: "vinilo-04",
         titulo: "Nirvana – Nevermind (25 Aniversario)",
-        imagen: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&auto=format&fit=crop",
+        imagen: "https://http2.mlstatic.com/D_NQ_NP_652776-MCO103748748832_012026-O.webp",
         categoria: { nombre: "Vinilos", id: "vinilos" },
         precio: 172000
     },
@@ -35,7 +35,7 @@ const productos = [
     {
         id: "instrumento-01",
         titulo: "Guitarra Fender Stratocaster Classic",
-        imagen: "https://images.unsplash.com/photo-1564466809058-bf4114d55352?w=400&auto=format&fit=crop",
+        imagen: "https://sinfoniamusical.com/cdn/shop/files/SQUIERBULLETNEGRO.jpg?v=1707941283&width=1214",
         categoria: { nombre: "Instrumentos", id: "instrumentos" },
         precio: 3450000
     },
