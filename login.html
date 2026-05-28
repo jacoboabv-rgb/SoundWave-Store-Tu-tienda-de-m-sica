@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión | SoundWave Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/estilos.css">
+    <style>
+        body { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: radial-gradient(ellipse at center, #1a1a1a 0%, #0a0a0a 100%); padding-top: 0; }
+        .auth-bg { position: fixed; inset: 0; background: url('https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=1400&auto=format&fit=crop') center/cover; filter: brightness(0.15) saturate(0.5); z-index: 0; }
+        .auth-wrapper { position: relative; z-index: 1; width: 100%; max-width: 440px; padding: 1rem; }
+        .pw-toggle { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; color: var(--color-gray); cursor: pointer; padding: 0; }
+        .pw-wrapper { position: relative; }
+    </style>
+</head>
+<body>
+<div class="auth-bg"></div>
+<div class="auth-wrapper">
+    <div class="auth-card">
+        <div class="text-center mb-4">
+            <a href="index.html" class="text-decoration-none">
+                <h2 class="auth-title"><i class="bi bi-music-note-beamed me-2"></i>SOUNDWAVE</h2>
+            </a>
+            <p class="text-muted small mt-1">Inicia sesión en tu cuenta</p>
+        </div>
+
+        <div id="alertLogin" class="alert alert-danger d-none" role="alert"></div>
+        <div id="alertSuccess" class="alert alert-success d-none" role="alert"></div>
+
+        <form id="formLogin" novalidate>
+            <div class="mb-3">
+                <label class="form-label text-white">Correo electrónico *</label>
+                <input type="email" class="form-control sw-input" id="loginEmail" placeholder="tu@email.com" required autocomplete="email">
+                <div class="invalid-feedback">Ingresa un correo válido</div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label text-white">Contraseña *</label>
+                <div class="pw-wrapper">
+                    <input type="password" class="form-control sw-input pe-5" id="loginPassword" placeholder="••••••••" required minlength="6">
+                    <button type="button" class="pw-toggle" id="togglePw"><i class="bi bi-eye"></i></button>
+                </div>
+                <div class="invalid-feedback">La contraseña debe tener mínimo 6 caracteres</div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="recordarme">
+                    <label class="form-check-label text-muted small" for="recordarme">Recordarme</label>
+                </div>
+                <a href="#" class="text-warning small text-decoration-none">¿Olvidaste tu contraseña?</a>
+            </div>
+            <button type="submit" class="btn btn-warning w-100 fw-bold py-2 mb-3">
+                <i class="bi bi-box-arrow-in-right me-2"></i>INICIAR SESIÓN
+            </button>
+        </form>
+
+        <hr class="border-secondary">
+        <p class="text-center text-muted small mb-0">
+            ¿No tienes cuenta?
+            <a href="registro.html" class="text-warning text-decoration-none fw-bold">Regístrate aquí</a>
+        </p>
+        <p class="text-center mt-2">
+            <a href="index.html" class="text-secondary small text-decoration-none">
+                <i class="bi bi-arrow-left me-1"></i>Volver a la tienda
+            </a>
+        </p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// =============================================
+// LOGIN – Validación JS + JSON + LocalStorage
+// =============================================
+
+// Mostrar/ocultar contraseña
+document.getElementById('togglePw').addEventListener('click', function() {
+    const pw = document.getElementById('loginPassword');
+    const icon = this.querySelector('i');
+    if (pw.type === 'password') {
+        pw.type = 'text';
+        icon.className = 'bi bi-eye-slash';
+    } else {
+        pw.type = 'password';
+        icon.className = 'bi bi-eye';
+    }
+});
+
+// Cargar usuarios registrados desde LocalStorage (JSON)
+function obtenerUsuarios() {
+    const data = localStorage.getItem('sw-usuarios');
+    return data ? JSON.parse(data) : [];
+}
+
+// Formulario Login
+document.getElementById('formLogin').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const email = document.getElementById('loginEmail');
+    const password = document.getElementById('loginPassword');
+    const alertEl = document.getElementById('alertLogin');
+    const successEl = document.getElementById('alertSuccess');
+
+    // Limpiar
+    [email, password].forEach(f => f.classList.remove('is-invalid', 'is-valid'));
+    alertEl.classList.add('d-none');
+    successEl.classList.add('d-none');
+
+    let valido = true;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email.value.trim())) {
+        email.classList.add('is-invalid');
+        valido = false;
+    } else {
+        email.classList.add('is-valid');
+    }
+
+    if (password.value.length < 6) {
+        password.classList.add('is-invalid');
+        valido = false;
+    } else {
+        password.classList.add('is-valid');
+    }
+
+    if (!valido) return;
+
+    // Verificar usuario en JSON/LocalStorage
+    const usuarios = obtenerUsuarios();
+    const usuario = usuarios.find(u =>
+        u.email.toLowerCase() === email.value.trim().toLowerCase() &&
+        u.password === password.value
+    );
+
+    if (usuario) {
+        // Guardar sesión
+        const sesion = {
+            nombre: usuario.nombre,
+            email: usuario.email,
+            timestamp: new Date().toISOString()
+        };
+        if (document.getElementById('recordarme').checked) {
+            localStorage.setItem('sw-sesion', JSON.stringify(sesion));
+        } else {
+            sessionStorage.setItem('sw-sesion', JSON.stringify(sesion));
+        }
+        successEl.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i>¡Bienvenido de nuevo, <strong>${usuario.nombre}</strong>! Redirigiendo...`;
+        successEl.classList.remove('d-none');
+        setTimeout(() => { window.location.href = 'index.html'; }, 1800);
+    } else {
+        // Verificar si existe el email (demo: si no hay usuarios, permitir demo)
+        if (usuarios.length === 0) {
+            // Demo: usuario de prueba
+            successEl.innerHTML = `<i class="bi bi-check-circle-fill me-2"></i>Acceso de demostración. ¡Bienvenido! Redirigiendo...`;
+            successEl.classList.remove('d-none');
+            setTimeout(() => { window.location.href = 'index.html'; }, 1800);
+        } else {
+            alertEl.innerHTML = `<i class="bi bi-exclamation-triangle-fill me-2"></i>Correo o contraseña incorrectos. Por favor verifica tus datos.`;
+            alertEl.classList.remove('d-none');
+            password.classList.add('is-invalid');
+        }
+    }
+});
+</script>
+</body>
+</html>
